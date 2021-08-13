@@ -360,7 +360,7 @@ Label_Candy_RunCommand:
         CdMfile_midfix := RegExReplace(Candy_Cmd,"i).*\{.*FirstFile(.*?)LastFile.*\}.*","$1")
         StringReplace ,CandySel_list,CandySel,`r`n,%CdMfile_midfix%,all
         CandySel_list=%CdMfile_prefix%%CandySel_list%%CdMfile_suffix%
-        Candy_Cmd:=RegExReplace(Candy_Cmd,"i)\{.*FirstFile.*LastFile.*\}",CandySel_list)
+        Candy_Cmd:=RegExReplace(Candy_Cmd,"i)\{[^{]*FirstFile.*LastFile[^}]*\}",CandySel_list)
     }
     If instr(Candy_Cmd,"{file:name:")
     {
